@@ -92,22 +92,6 @@ python main.py
 
 ---
 
-## 👥 Team Members
-
-| Person | Module | Responsibility |
-|---|---|---|
-| 1 | `constants.py` | Project overview & colour system |
-| 2 | `algorithms/moves.py` | Knight moves & Warnsdorff heuristic |
-| 3 | `algorithms/backtracking.py` | Backtracking algorithm |
-| 4 | `algorithms/genetic.py` (Part 1) | GA structure, fitness, chromosome generation |
-| 5 | `algorithms/genetic.py` (Part 2) | Selection, mutation & main GA loop |
-| 6 | `gui/board.py` | Board rendering & click interaction |
-| 7 | `gui/controls.py` | Control panel & settings widgets |
-| 8 | `gui/solver.py` | Threading, animation & result display |
-| 9 | `gui/app.py` + `main.py` | App assembly & entry point |
-
----
-
 ## 📚 Development Platform
 
 - **Language:** Python 3.9+
