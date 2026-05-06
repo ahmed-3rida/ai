@@ -1,100 +1,108 @@
-# Knight's Tour Problem Solver 🐴
-
-> CS212 Artificial Intelligence — Spring 2025  
-> HNU University
-
-A Python desktop application that solves the **Knight's Tour** chess problem using two AI algorithms, with a fully interactive Tkinter GUI.
-
----
-
-## 📖 Problem Description
-
-The Knight's Tour is a classic combinatorial problem where a chess knight must visit **every square on an n×n board exactly once**, making only valid L-shaped moves.
+<div align="center">
+  <h1>🐴 Knight's Tour Problem Solver</h1>
+  <p><strong>CS212 Artificial Intelligence — Spring 2025 | HNU University</strong></p>
+  <p>A Python desktop application that solves the classic Knight's Tour chess problem using advanced AI algorithms with a fully interactive GUI.</p>
+</div>
 
 ---
 
-## 🧠 Algorithms
-
-### 1. Backtracking + Warnsdorff's Heuristic
-- Recursively explores all possible knight paths
-- Uses **Warnsdorff's Rule** to always move to the square with the fewest onward moves
-- Near-instant for boards up to 12×12
-
-### 2. Genetic Algorithm
-- Evolves a population of knight-tour chromosomes over generations
-- Uses **Tournament Selection** and **Segment-Restart Mutation**
-- Configurable population size and generation count
+## 📑 جدول المحتويات (Table of Contents)
+- [👥 تقسيم المهام وأعضاء الفريق](#-تقسيم-المهام-وأعضاء-الفريق-team-tasks-distribution)
+- [📖 الشرح الشامل للمشروع](#-الشرح-الشامل-للمشروع-comprehensive-project-explanation)
+  - [الخوارزميات (Algorithms)](#-أولاً-الخوارزميات-algorithms-folder)
+  - [واجهة المستخدم (GUI)](#-ثانياً-واجهة-المستخدم-gui-folder)
+- [🗂️ هيكل المشروع (Project Structure)](#-هيكل-المشروع-project-structure)
+- [🚀 كيفية التشغيل (How to Run)](#-كيفية-التشغيل-how-to-run)
+- [🎮 طريقة الاستخدام (How to Use)](#-طريقة-الاستخدام-how-to-use)
 
 ---
 
-## 🖥️ Features
+## 👥 تقسيم المهام وأعضاء الفريق (Team Tasks Distribution)
 
-- 🎨 Modern dark-themed desktop GUI (Tkinter)
-- 📐 User-selectable board size: **5×5 to 12×12**
-- 🖱️ Click any cell to set the **start position**
-- ▶️ Step-by-step animated knight movement
-- ⚡ Algorithms run in background threads — UI never freezes
-- 📊 Live statistics: squares visited, coverage %, solve time
+تم تقسيم الفريق إلى مجموعتين لضمان التركيز وتسهيل المذاكرة والمناقشة:
+
+| 🧠 مجموعة الخوارزميات (Algorithms Group) | 🖥️ مجموعة واجهة المستخدم (GUI Group) |
+| :--- | :--- |
+| **مسؤوليات:** الذكاء الاصطناعي، طرق الحل، المنطق الرياضي | **مسؤوليات:** الواجهة الرسومية، التفاعل، عرض الحلول بصرياً |
+| 1. **Ahmed Salman Hameed** *(Team Leader)* | 1. **Youssef Safwat Arnest** |
+| 2. **Kareem Ayman Bakre** | 2. **Youssef Mohamed Mohamed** |
+| 3. **Abdelrahman Mohamed Khairy** | 3. **Youssef Ramadan AbdelZaher** |
+| 4. **Haya Mahmoud Mohamed** | 4. **Abdelrahman Mohamed Sayed** |
+| | 5. **Mahmoud Mohamed Adwi** |
 
 ---
 
-## 🗂️ Project Structure
+## 📖 الشرح الشامل للمشروع (Comprehensive Project Explanation)
 
-```
+هذا الجزء هو المرجع الأساسي لكل أعضاء الفريق لفهم ترابط المشروع بالكامل.
+
+### 💡 فكرة المشروع
+المشروع يحل مشكلة **"مسار الحصان" (Knight's Tour)**. المطلوب هو أن يتحرك حصان الشطرنج ليزور كل مربع على الرقعة (مثلاً 8x8) **مرة واحدة فقط** دون أي تكرار أو خروج عن حدود الرقعة.
+
+### 🧠 أولاً: الخوارزميات (Algorithms Folder)
+يحتوي على العقل المفكر للمشروع، ويتكون من 3 ملفات أساسية:
+
+- 📄 **`moves.py` (قواعد الرقعة):** يحدد الحركات المتاحة للحصان بشكل `L` ويتأكد من صحتها. يحتوي على دالة `degree` لحساب الحركات المستقبلية المتاحة (أساس قاعدة Warnsdorff).
+- 📄 **`backtracking.py` (خوارزمية التراجع):** تجربة المسارات خطوة بخطوة. مدعومة بـ **Warnsdorff's Heuristic** لاختيار المربع ذو الحركات المستقبلية الأقل، مما يسرع الحل بشكل هائل.
+- 📄 **`genetic.py` (الخوارزمية الجينية):** محاكاة للتطور. تبدأ بمسارات عشوائية (Population)، تختار الأفضل (Tournament Selection)، وتحدث طفرات (Mutation) للوصول للحل الأمثل.
+
+### 🖥️ ثانياً: واجهة المستخدم (GUI Folder)
+مبني بمكتبة `tkinter` ومقسم بنظام الـ Mixins:
+
+- 📄 **`app.py` (الإطار الرئيسي):** يجمع مكونات الواجهة ويقسم الشاشة للوحة التحكم والرقعة.
+- 📄 **`controls.py` (لوحة التحكم):** أزرار التحكم، اختيار الخوارزمية، تغيير الحجم، وعرض الإحصائيات (الوقت ونسبة التغطية).
+- 📄 **`board.py` (رقعة الشطرنج):** رسم الرقعة، تلقي ضغطات الماوس لتحديد نقطة البداية، ورسم حركة الحصان (Animation) خطوة بخطوة.
+- 📄 **`solver.py` (التشغيل في الخلفية):** يستخدم `Threads` لتشغيل الخوارزميات في الخلفية لمنع تجمد الواجهة (Freezing) أثناء التفكير.
+
+### ⚙️ ثالثاً: الإعدادات والتشغيل
+- 📄 **`main.py`:** نقطة البداية (Entry Point) لتشغيل التطبيق.
+- 📄 **`constants.py`:** الثوابت والألوان الخاصة بالتصميم الموحد.
+
+---
+
+## 🗂️ هيكل المشروع (Project Structure)
+
+```text
 knights_tour_project/
-├── main.py                   # Entry point — run this!
-├── constants.py              # Colours and shared config
-├── algorithms/
-│   ├── moves.py              # Knight move logic + Warnsdorff heuristic
-│   ├── backtracking.py       # Backtracking algorithm
-│   └── genetic.py            # Genetic Algorithm class
-├── gui/
-│   ├── app.py                # Main application window
-│   ├── board.py              # Board rendering & interaction
-│   ├── controls.py           # Left control panel
-│   └── solver.py             # Threading, animation & results
-└── docs/
-    ├── 01_person1_overview_constants.md
-    ├── 02_person2_knight_moves.md
-    ├── 03_person3_backtracking.md
-    ├── 04_person4_genetic_core.md
-    ├── 05_person5_genetic_operators.md
-    ├── 06_person6_gui_board.md
-    ├── 07_person7_gui_controls.md
-    ├── 08_person8_solver_animation.md
-    └── 09_person9_main_app.md
+├── main.py                   # نقطة تشغيل المشروع الأساسية
+├── constants.py              # ثوابت الألوان والإعدادات العامة
+├── algorithms/               # 🧠 فولدر الخوارزميات (للمجموعة الأولى)
+│   ├── moves.py              # حساب حركات الحصان المتاحة
+│   ├── backtracking.py       # خوارزمية الـ Backtracking
+│   └── genetic.py            # الخوارزمية الجينية
+├── gui/                      # 🖥️ فولدر واجهة المستخدم (للمجموعة الثانية)
+│   ├── app.py                # الواجهة الرئيسية
+│   ├── board.py              # رقعة الشطرنج والجرافيكس
+│   ├── controls.py           # لوحة التحكم والأزرار
+│   └── solver.py             # الـ Threading والتشغيل في الخلفية
+└── team_tasks/               # 📚 شروحات المذاكرة الخاصة بكل عضو في الفريق
 ```
 
 ---
 
-## 🚀 How to Run
+## 🚀 كيفية التشغيل (How to Run)
 
-### Requirements
+### Requirements (المتطلبات)
 - Python 3.9+
 - No external packages needed — only the standard library (`tkinter`, `random`, `time`, `threading`)
 
-### Run
+### Run Command (أمر التشغيل)
 ```bash
-cd knights_tour_project
 python main.py
 ```
 
----
-
-## 🎮 How to Use
-
-1. **Set board size** using the slider (5–12)
-2. **Click any cell** on the board to set the start position
-3. **Choose algorithm**: Backtracking or Genetic
-4. *(For Genetic)* Tune population size and generations
-5. Click **▶ SOLVE** and watch the knight move!
-6. Click **↺ Replay Animation** to re-watch
+> **Development Platform:**
+> - **GUI Library:** `tkinter` (built-in)
+> - **IDE:** VS Code / PyCharm
+> - **OS:** Windows / Linux / macOS
 
 ---
 
-## 📚 Development Platform
+## 🎮 طريقة الاستخدام (How to Use)
 
-- **Language:** Python 3.9+
-- **GUI Library:** `tkinter` (built-in)
-- **IDE:** VS Code / PyCharm
-- **OS:** Windows / Linux / macOS
+1. 📏 **تحديد الحجم:** استخدم شريط التمرير (Slider) لاختيار حجم الرقعة (من 5 إلى 12).
+2. 🎯 **نقطة البداية:** اضغط بالماوس على أي مربع في الرقعة لاختياره كنقطة بداية للحصان.
+3. 🧠 **اختيار الخوارزمية:** اختر إما خوارزمية التراجع (Backtracking) أو الخوارزمية الجينية (Genetic).
+4. ⚙️ **إعدادات الجينات (اختياري):** في حالة اختيار Genetic، يمكنك تعديل حجم الجيل (Population) وعدد الأجيال (Generations).
+5. ▶️ **التشغيل:** اضغط على زر **SOLVE** وشاهد الحصان وهو يحل الرقعة.
+6. 🔄 **إعادة التشغيل:** بعد انتهاء الحل، يمكنك الضغط على **Replay Animation** لمشاهدة الحركة مرة أخرى.

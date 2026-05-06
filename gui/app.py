@@ -32,7 +32,7 @@ class KnightsTourApp(BoardMixin, ControlsMixin, SolverMixin, tk.Tk):
         super().__init__()
 
         # ── Window setup ───────────────────────
-        self.title("Knight's Tour Solver — CS212 AI Spring 2025")
+        self.title("Knight's Tour Solver — AI Project · 933240005")
         self.configure(bg=BG)
         self.resizable(True, True)
         self.minsize(900, 620)
@@ -69,7 +69,7 @@ class KnightsTourApp(BoardMixin, ControlsMixin, SolverMixin, tk.Tk):
         hdr.pack(fill="x", padx=24, pady=(18, 0))
 
         tk.Label(hdr,
-                 text="CS212 · AI Project · Spring 2025",
+                 text="933240005 · AI Project",
                  bg="#1a1f35", fg=ACCENT,
                  font=("Courier", 10), padx=10, pady=4).pack()
 
