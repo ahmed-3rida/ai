@@ -3,7 +3,7 @@
 #  Knight's Tour Solver — CS212 AI Spring 2025
 # ─────────────────────────────────────────────
 import time
-from algorithms.moves import valid_moves, degree
+from algorithms import valid_moves, degree
 
 
 def backtracking_solve(n, sx, sy):

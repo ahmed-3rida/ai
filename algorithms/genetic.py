@@ -4,7 +4,7 @@
 # ─────────────────────────────────────────────
 import random
 import time
-from algorithms.moves import valid_moves, degree
+from algorithms import valid_moves, degree
 
 
 class GeneticKnightsTour:

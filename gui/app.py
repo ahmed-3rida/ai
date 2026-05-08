@@ -8,9 +8,9 @@ from tkinter import ttk
 
 from constants import (BG, SURFACE, SURFACE2, BORDER, ACCENT, MUTED, TEXT,
                        BOARD_DEFAULT)
-from gui.board    import BoardMixin
-from gui.controls import ControlsMixin
-from gui.solver   import SolverMixin
+from gui import BoardMixin
+from gui import ControlsMixin
+from gui import SolverMixin
 
 
 class KnightsTourApp(BoardMixin, ControlsMixin, SolverMixin, tk.Tk):
