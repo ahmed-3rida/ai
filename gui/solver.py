@@ -115,7 +115,7 @@ class SolverMixin:
         Runs in a separate thread so tkinter's event loop stays
         responsive. Results are posted back via `self.after(0, …)`.
         """
-        from algorithms.backtracking import backtracking_solve
+        from algorithms import backtracking_solve
         n = self.n.get()
         path, elapsed, success = backtracking_solve(n, self.start_r, self.start_c)
         # Post result to main thread (thread-safe)
@@ -129,7 +129,7 @@ class SolverMixin:
         A callback is passed to GA.solve() to push generation progress
         to the main thread via `self.after(0, …)` (thread-safe).
         """
-        from algorithms.genetic import GeneticKnightsTour
+        from algorithms import GeneticKnightsTour
         n    = self.n.get()
         pop  = self.pop_size.get()
         gens = self.gens.get()

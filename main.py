@@ -9,7 +9,7 @@ Run:
 import tkinter as tk
 from tkinter import ttk
 from constants import (SURFACE, SURFACE2, BORDER, ACCENT)
-from gui.app import KnightsTourApp
+from gui import KnightsTourApp
 
 
 def apply_theme(app: KnightsTourApp) -> None:
