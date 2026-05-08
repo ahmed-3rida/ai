@@ -1,24 +1,33 @@
 # ─────────────────────────────────────────────
-#  BACKTRACKING + WARNSDORFF  (Person 3)
+#  BACKTRACKING  (Person 3)
 #  Knight's Tour Solver — CS212 AI Spring 2025
 # ─────────────────────────────────────────────
 import time
-from algorithms import valid_moves, degree
+# pyrefly: ignore [parse-error]
+from algorithms import valid_moves , degree
 
 
 def backtracking_solve(n, sx, sy):
     """
-    Solve the Knight's Tour using Backtracking with Warnsdorff's heuristic.
+    Solve the Knight's Tour using standard Backtracking.
 
     Algorithm Steps
     ---------------
     1. Start at (sx, sy) and mark it visited.
     2. At each step, list all valid unvisited neighbours.
+    3. Recurse into the first valid neighbour.
+    4. If all n² squares are visited → SUCCESS.
+    5. If stuck → backtrack (un-mark current square, pop from path).
+    
+    Solve the Knight's Tour using Backtracking with Warnsdorff's heuristic.
+    Algorithm Steps
+    ---------------
+    1. Start at (sx, sy) and mark it visited.
+    2. At each step, list all valid unvisited neighbours.    
     3. Sort them by Warnsdorff's degree (fewest onward moves first).
     4. Recurse into the best neighbour.
     5. If all n² squares are visited → SUCCESS.
     6. If stuck → backtrack (un-mark current square, pop from path).
-
     Parameters
     ----------
     n        : board size (n × n)
@@ -42,8 +51,9 @@ def backtracking_solve(n, sx, sy):
         if step == n * n:
             return True
 
-        # Generate neighbours and sort by Warnsdorff's degree
+        # Generate valid neighbours
         neighbours = valid_moves(x, y, n, visited)
+        # Generate neighbours and sort by Warnsdorff's degree
         neighbours.sort(key=lambda p: degree(p[0], p[1], n, visited))
 
         for nx, ny in neighbours:

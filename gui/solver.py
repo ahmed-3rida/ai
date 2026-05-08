@@ -99,7 +99,8 @@ class SolverMixin:
             var.set("…")
 
         if self.algo.get() == "backtracking":
-            self._set_status("Running Backtracking + Warnsdorff…", "running")
+            # self._set_status("Running Backtracking + Warnsdorff…", "running")
+            self._set_status("Running Backtracking Algorithm…", "running")
             threading.Thread(target=self._run_bt, daemon=True).start()
         else:
             self._set_status("Running Genetic Algorithm…", "running")
