@@ -27,13 +27,14 @@ def valid_moves(x, y, n, visited):
     -------
     list of (nx, ny) tuples – each is a legal next position
     """
-    return [
-        (x + dx, y + dy)
-        for dx, dy in MOVES
-        if 0 <= x + dx < n
-        and 0 <= y + dy < n
-        and not visited[x + dx][y + dy]
-    ]
+    valid = []
+    for dx, dy in MOVES:
+        nx = x + dx
+        ny = y + dy
+        if 0 <= nx < n and 0 <= ny < n:
+            if not visited[nx][ny]:
+                valid.append((nx, ny))
+    return valid
 
 
 def degree(x, y, n, visited):
